@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc --version)",
+      "Bash(pip install *)",
+      "Bash(python -m pip install markdown pygments)",
+      "Bash(python scripts/build_web.py)",
+      "Bash(git *)"
+    ]
+  }
+}

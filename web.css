@@ -1,0 +1,305 @@
+/* ============================================================
+   Production AI Engineering — web (screen) stylesheet
+   Finland palette: #003580 primary, #001a4d ink, #e8eef7 fill
+   ============================================================ */
+
+:root {
+  --c-primary: #003580;
+  --c-ink: #001a4d;
+  --c-fill: #e8eef7;
+  --c-border: #c9d4e8;
+  --c-bg: #ffffff;
+  --c-text: #1a1a1a;
+  --c-muted: #555;
+  --c-rule: #e2e8f0;
+  --c-pre-bg: #f4f7fc;
+  --c-code-bg: #e8eef7;
+  --c-link: #003580;
+
+  --f-prose: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+             Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --f-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --w-content: 72ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-primary: #6ea8ff;
+    --c-ink: #d6e3ff;
+    --c-fill: #14213d;
+    --c-border: #1f2d4d;
+    --c-bg: #0b1020;
+    --c-text: #e6e8ee;
+    --c-muted: #9aa3b2;
+    --c-rule: #1f2d4d;
+    --c-pre-bg: #0f1730;
+    --c-code-bg: #14213d;
+    --c-link: #6ea8ff;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--c-bg);
+  color: var(--c-text);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--f-prose);
+  font-size: 17px;
+  line-height: 1.62;
+  margin: 0;
+  padding: 2.5rem 1.25rem 6rem;
+  color: var(--c-text);
+  background: var(--c-bg);
+  font-feature-settings: "kern", "liga";
+}
+
+main {
+  max-width: var(--w-content);
+  margin: 0 auto;
+}
+
+/* ---------- typography ---------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--f-prose);
+  color: var(--c-primary);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 2.4em 0 0.5em;
+  font-weight: 700;
+  scroll-margin-top: 1rem;
+}
+
+h1 {
+  font-size: 2.1rem;
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.55rem;
+  border-top: 1px solid var(--c-rule);
+  padding-top: 1.6em;
+  margin-top: 2.6em;
+}
+
+.meta + h2 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0.6em;
+}
+
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.02rem; color: var(--c-ink); }
+
+p { margin: 0 0 1em; }
+
+strong { color: var(--c-ink); font-weight: 700; }
+em { color: var(--c-text); font-style: italic; }
+
+/* anchor link affordance on headings */
+.anchor {
+  color: var(--c-muted);
+  text-decoration: none;
+  margin-left: 0.4em;
+  opacity: 0;
+  font-weight: 400;
+  font-size: 0.85em;
+  transition: opacity 0.15s;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor { opacity: 1; }
+
+/* ---------- byline ---------- */
+
+.byline {
+  font-size: 0.95rem;
+  color: var(--c-primary);
+  font-weight: 600;
+  margin: 0 0 2.2em;
+  padding-bottom: 0.9em;
+  border-bottom: 2px solid var(--c-primary);
+  line-height: 1.5;
+}
+
+.byline a {
+  color: var(--c-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--c-primary);
+}
+
+/* ---------- top metadata strip ---------- */
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.4rem;
+  font-size: 0.92rem;
+  margin: -0.8em 0 2em;
+  color: var(--c-muted);
+}
+
+.meta a {
+  color: var(--c-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.meta a:hover { border-bottom-color: var(--c-primary); }
+
+/* ---------- links ---------- */
+
+a {
+  color: var(--c-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+/* ---------- lists ---------- */
+
+ul, ol {
+  margin: 0 0 1em;
+  padding-left: 1.5em;
+}
+
+li { margin: 0.2em 0; }
+li > p { margin: 0 0 0.4em; }
+li ul, li ol { margin-top: 0.2em; margin-bottom: 0.2em; }
+
+/* ---------- code ---------- */
+
+code {
+  font-family: var(--f-mono);
+  font-size: 0.88em;
+  background: var(--c-code-bg);
+  color: var(--c-ink);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  border: 1px solid var(--c-border);
+  font-feature-settings: normal;
+  font-variant-ligatures: none;
+}
+
+pre {
+  font-family: var(--f-mono);
+  background: var(--c-pre-bg);
+  border: 1px solid var(--c-border);
+  border-left: 3px solid var(--c-primary);
+  border-radius: 4px;
+  padding: 0.9em 1.1em;
+  margin: 1.2em 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--c-ink);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ---------- tables ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 1.2em 0;
+  border-radius: 4px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+th, td {
+  border: 1px solid var(--c-border);
+  padding: 0.55em 0.8em;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--c-primary);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+tbody tr:nth-child(even) { background: var(--c-fill); }
+
+/* ---------- rules / blockquote ---------- */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--c-rule);
+  margin: 2.5em 0;
+}
+
+/* h2 already has its own border-top divider — drop the redundant <hr> before it */
+hr:has(+ h2) { display: none; }
+
+blockquote {
+  margin: 1.2em 0;
+  padding: 0.4em 1.1em;
+  border-left: 3px solid var(--c-primary);
+  background: var(--c-fill);
+  color: var(--c-ink);
+  font-style: italic;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+  max-width: var(--w-content);
+  margin: 4rem auto 0;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--c-rule);
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+
+footer a { color: var(--c-primary); }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+    padding: 1.5rem 1rem 4rem;
+  }
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+  pre { font-size: 0.78rem; padding: 0.7em 0.8em; }
+  th, td { padding: 0.45em 0.55em; font-size: 0.85rem; }
+}
+
+/* ---------- print ---------- */
+
+@media print {
+  body {
+    font-size: 11pt;
+    padding: 0;
+    color: #000;
+    background: #fff;
+  }
+  main { max-width: none; }
+  a { color: #000; text-decoration: underline; }
+  .meta, .anchor, footer { display: none; }
+  pre, code { background: #f5f5f5; }
+}

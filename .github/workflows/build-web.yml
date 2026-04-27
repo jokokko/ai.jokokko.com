@@ -1,0 +1,46 @@
+name: Build web
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'production-ai-engineering.md'
+      - 'web.css'
+      - 'scripts/build_web.py'
+      - '.github/workflows/build-web.yml'
+  pull_request:
+    paths:
+      - 'production-ai-engineering.md'
+      - 'web.css'
+      - 'scripts/build_web.py'
+      - 'index.html'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install markdown==3.10.2
+
+      - name: Build index.html
+        run: python scripts/build_web.py
+
+      - name: Verify index.html is up to date
+        run: |
+          if ! git diff --exit-code -- index.html; then
+            echo "::error::index.html is out of date. Run scripts/build_web.py and commit the result."
+            exit 1
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-html
+          path: index.html

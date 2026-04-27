@@ -1,0 +1,52 @@
+name: Build PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'production-ai-engineering.md'
+      - 'style.css'
+      - 'scripts/build.sh'
+      - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'production-ai-engineering.md'
+      - 'style.css'
+      - 'scripts/build.sh'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc wkhtmltopdf python3
+          pip install pypdf
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build PDF
+        run: ./scripts/build.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-ai-engineering-pdf
+          path: production-ai-engineering.pdf
+
+      - name: Verify PDF page count and size
+        run: |
+          PAGES=$(python3 -c "from pypdf import PdfReader; print(len(PdfReader('production-ai-engineering.pdf').pages))")
+          SIZE=$(stat -c%s production-ai-engineering.pdf)
+          echo "Pages: $PAGES"
+          echo "Size: $SIZE bytes"
+          if [ "$PAGES" -gt 10 ]; then
+            echo "Page count regression — was 4, now $PAGES"
+            exit 1
+          fi
