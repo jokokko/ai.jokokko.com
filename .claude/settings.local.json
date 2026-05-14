@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc --version)",
+      "Bash(pip install *)",
+      "Bash(python -m pip install markdown pygments)",
+      "Bash(python scripts/build_web.py)",
+      "Bash(git *)",
+      "Bash(aijokokko\")",
+      "WebFetch(domain:ai.jokokko.com)",
+      "Bash(where.exe pandoc *)",
+      "Bash(powershell *)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebSearch",
+      "Bash(pwsh *)",
+      "Bash(where.exe wkhtmltopdf *)",
+      "Bash(dos2unix -c mac -V)",
+      "Bash(echo \"---EXIT $?---\")",
+      "Bash(curl -fsSL https://ai.jokokko.com/ -o /tmp/live-index.html)",
+      "Bash(curl -fsSL https://ai.jokokko.com/production-ai-engineering.md -o /tmp/live-md.md)",
+      "Bash(curl -fsSL https://ai.jokokko.com/llms.txt -o /tmp/live-llms.txt)",
+      "Bash(curl -fsSL https://ai.jokokko.com/llms-full.txt -o /tmp/live-llms-full.txt)",
+      "Bash(curl -fsSL https://ai.jokokko.com/sitemap.xml -o /tmp/live-sitemap.xml)",
+      "Bash(curl -fsSI https://ai.jokokko.com/production-ai-engineering.pdf -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -fsSI https://ai.jokokko.com/ -w \"etag:%{header_x-amz-etag} content-length:%{size_download} status:%{http_code}\\\\n\" -o /dev/null)",
+      "Bash(curl -fsSI https://ai.jokokko.com/sitemap.xml)",
+      "Bash(curl -fsSI https://ai.jokokko.com/llms-full.txt)",
+      "Bash(curl -fsSI https://ai.jokokko.com/llms.txt)",
+      "Bash(curl -fsSL https://ai.jokokko.com/robots.txt)",
+      "Bash(curl -fsSI https://ai.jokokko.com/og-image.png)"
+    ]
+  }
+}

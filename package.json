@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "artifacts": "npm run og && npm run pdf",
+    "og": "node scripts/render-og.mjs",
+    "pdf:install": "playwright install chromium",
+    "pdf": "node scripts/render-pdf.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

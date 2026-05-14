@@ -1,0 +1,29 @@
+# Production AI Engineering
+
+> A common-sense guide for engineers shipping LLM-backed systems to production. Covers foundations, retrieval, agents, evaluation, and production concerns in a single opinionated document. Written for engineers, not procurement.
+
+The site hosts one long-form article. The markdown source is the preferred form for LLM consumption — it is the same content the HTML is rendered from, with no navigation chrome. Headings, tables, and code blocks are stable section anchors.
+
+Stance: opinionated where evidence supports it (hybrid retrieval over pure vector, native structured outputs over "please return JSON", host-UI HITL over model-generated confirmations), neutral where it does not. Does not claim novelty — claims usefulness as a single reference.
+
+## Article
+
+- [Production AI Engineering (markdown)](https://ai.jokokko.com/production-ai-engineering.md): Full article in raw markdown. Preferred source for LLM ingestion.
+- [Production AI Engineering (llms-full.txt)](https://ai.jokokko.com/llms-full.txt): Full article with a metadata header inlined — single-fetch ingestion target for AI crawlers.
+- [Production AI Engineering (HTML)](https://ai.jokokko.com/): Same content rendered for web reading. Self-contained single-file page.
+- [Production AI Engineering (PDF)](https://ai.jokokko.com/production-ai-engineering.pdf): Printable/readable PDF generated from the web version.
+
+## Sections
+
+- [TL;DR](https://ai.jokokko.com/#tldr-top-5-if-you-read-nothing-else): Five highest-leverage recommendations — eval set, prompt caching, hybrid retrieval + rerank, native structured outputs, agent budget caps.
+- [1. Foundations](https://ai.jokokko.com/#1-foundations): Classical vs. LLM systems, request cycle, model selection, transformer mechanics, controlling randomness (temperature, top_p).
+- [2. Context engineering and RAG](https://ai.jokokko.com/#2-context-engineering-and-rag): Prompt-engineering principles, chunking and enrichment, hybrid retrieval (vector + BM25 via RRF), reranking, long-context vs. RAG tradeoffs, retrieval evaluation, semantic caching.
+- [3. Agents](https://ai.jokokko.com/#3-agents): Agent loop, MCP, workflow vs. agent patterns, structured outputs and constrained decoding, tool design, resilience, side effects, sandboxing, HITL.
+- [4. Evaluation](https://ai.jokokko.com/#4-evaluation): The eval loop, error analysis, LLM-as-judge, human evaluation, synthetic and adversarial testing.
+- [5. Production](https://ai.jokokko.com/#5-production): Quantization, fine-tuning, guardrails, observability and telemetry, streaming UX, pre-launch checklist.
+
+## Optional
+
+- [Source repository](https://github.com/jokokko/ai.jokokko.com): GitHub repo containing the article source and rendered web artifacts.
+- [Author](https://jokokko.com): Joona-Pekka Kokko.
+- [License](https://github.com/jokokko/ai.jokokko.com/blob/master/LICENSE): Content licensed under CC BY 4.0.
